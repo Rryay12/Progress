@@ -1,0 +1,50 @@
+.topNav{
+    display: flex;
+    background-color: grey;
+    justify-content: space-around;
+    aspect-ratio: 20/1;
+    align-items: center;
+}
+
+.menu{
+    color: white;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.Title{
+    display:flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+.Paragraph{
+    display: flex;
+    width: 20cm;
+    text-align: center;
+}
+
+.Body{
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.ImageContainer{
+    display: flex;
+    background-image: url('static/rona_img.png');
+    height: 100px;
+    width: 100px;
+    scale: 1;
+    border: 2px solid red;
+
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+}
+
+.PhotoContainer{
+    display: flex;
+    flex-direction: row;
+}
