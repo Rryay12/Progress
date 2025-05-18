@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Rona Sando Homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tech Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-    <body>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="branding">
+        <h1> My Tech Portfolio</h1>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <div class="topNav">
-            <a class="menu" href="#home">Home</a>
-            <a class="menu" href="#news">News</a>
-            <a class="menu" href="#contact">Contact</a>
-            <a class="menu" href="#about">About</a>
+    <main class="main-content">
+      <section class="intro section">
+        <div class="section-content">
+          <h2>👋 Hello, I'm [Your Name]</h2>
+          <p>A passionate student developer with interests in software, hardware, and AI. This portfolio highlights some of my favorite personal and collaborative projects.</p>
         </div>
+      </section>
 
-        <div class="Title">
-            <h1>Rona Sando</h1>
+      <section class="projects section">
+        <div class="section-content">
+          <h2>🛠 Featured Projects</h2>
+          <div class="project-card">
+            <h3>Autonomous Race Car (Reinforcement Learning)</h3>
+            <p>Used Deep Q-Learning in Python to train a virtual race car to drive around a custom track using coordinate data.</p>
+            <p><strong>Tech:</strong> Python, Pygame, NumPy</p>
+            <a href="https://github.com/yourusername/autonomous-racecar" target="_blank">GitHub Repo</a>
+          </div>
+          <div class="project-card">
+            <h3>Satellite Telemetry Dashboard</h3>
+            <p>Built a web-based real-time dashboard to visualize satellite data for a school research project.</p>
+            <p><strong>Tech:</strong> JavaScript, D3.js, HTML/CSS</p>
+            <a href="https://github.com/yourusername/satellite-dashboard" target="_blank">GitHub Repo</a>
+          </div>
+          <div class="project-card">
+            <h3>Solid-State Battery Research</h3>
+            <p>Assisted in materials analysis and published findings on a research blog. Explored efficiency and stability of solid-state batteries.</p>
+            <a href="https://yourblog.com/solid-state-research" target="_blank">Blog Post</a>
+          </div>
         </div>
+      </section>
 
-        <div class="Body">
-            <div class="Paragraph">
-            <p>
-                Hello my name is Rona Sando and I am a person in Hiroo Gakuen High School. My goal is to take over the planet using pizzas and cake. 
-                I hope you enjoy my existance and the fact that i am a great human being. I absolutely hate being in school, not that I don't like studying
-                but because it feels so constraining and not fun.
-            </p>
+      <section class="skills section">
+        <div class="section-content">
+          <h2>💡 Skills & Tools</h2>
+          <ul>
+            <li>Programming: Python, C++, JavaScript</li>
+            <li>Tools: Git, VS Code, Arduino, Raspberry Pi</li>
+            <li>Libraries: Pygame, TensorFlow, React</li>
+          </ul>
         </div>
+      </section>
+
+      <section class="resume section">
+        <div class="section-content">
+          <h2>📄 Resume & More</h2>
+          <p>Download my resume <a href="resume.pdf" target="_blank">here</a>.</p>
         </div>
+      </section>
+    </main>
 
-        <div class="PhotoContainer">
-            <div class="ImageContainer"></div>
-
-            <div class="Caption">
-                <p>
-                    Hello my name is Rona Sando and I am a person in Hiroo Gakuen High School. My goal is to take over the planet using pizzas and cake. 
-                    I hope you enjoy my existance and the fact that i am a great human being. I absolutely hate being in school, not that I don't like studying
-                    but because it feels so constraining and not fun.
-                </p>
-            </div>
-        </div>
-
-        
-        
-    </body>
+    <footer class="footer">
+      <p>&copy; 2025 Your Name | <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    </footer>
+  </div>
+</body>
 </html>

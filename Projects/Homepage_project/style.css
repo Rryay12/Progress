@@ -1,50 +1,123 @@
-.topNav{
-    display: flex;
-    background-color: grey;
-    justify-content: space-around;
-    aspect-ratio: 20/1;
-    align-items: center;
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #222;
+  line-height: 1.6;
 }
 
-.menu{
-    color: white;
-    text-decoration: none;
-    font-size: larger;
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 2rem;
 }
 
-.Title{
-    display:flex;
-    justify-content: center;
-    font-size: xx-large;
+/* Header */
+.header {
+  background-color: #0a192f;
+  color: #fff;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.Paragraph{
-    display: flex;
-    width: 20cm;
-    text-align: center;
+.branding h1 {
+  margin: 0;
+  font-size: 1.8rem;
 }
 
-.Body{
-
-    display: flex;
-    justify-content: center;
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  padding: 0;
+  margin: 0;
 }
 
-
-.ImageContainer{
-    display: flex;
-    background-image: url('static/rona_img.png');
-    height: 100px;
-    width: 100px;
-    scale: 1;
-    border: 2px solid red;
-
-    background-size: cover;       
-    background-position: center;  
-    background-repeat: no-repeat; 
+.navbar a {
+  color: #f8f8f8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.PhotoContainer{
-    display: flex;
-    flex-direction: row;
+.navbar a:hover {
+  color: #64ffda;
+}
+
+/* Main */
+.main-content {
+  padding: 3rem 0;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Projects */
+.project-card {
+  background-color: #f9fafc;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #64ffda;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+/* Skills */
+.skills ul {
+  padding-left: 1.2rem;
+}
+
+/* Resume */
+.resume a {
+  color: #0077cc;
+  font-weight: bold;
+}
+
+/* Footer */
+.footer {
+  background-color: #0a192f;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #64ffda;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
