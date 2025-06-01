@@ -701,7 +701,7 @@ import keyboard
 pygame.init()
 pygame.font.init()
 
-pathname ="/Users/ard/Desktop/Coding_2/F1_laptime_project/multitrack_2/policy_no_17-3.pth"
+pathname ="/Users/ard/Desktop/Coding_2/F1_laptime_project/multitrack_2/policy_no_20-1.pth"
 
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 

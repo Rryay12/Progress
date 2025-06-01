@@ -663,7 +663,7 @@ class game:
 
         # Penalty for standing still
         if self.car.get_speed() < 0.5:
-            self.current_point -= 1 # discourage inactivity or stalling
+            self.current_point -= 0.1 # discourage inactivity or stalling
 
         self.total_score += self.current_point
         
@@ -805,8 +805,8 @@ class game:
 class DQN(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(DQN, self).__init__()
-        self.fc1 = nn.Linear(state_dim, 128)
-        self.fc2 = nn.Linear(128, 128)
+        self.fc1 = nn.Linear(state_dim, 64)
+        self.fc2 = nn.Linear(64, 128)
         self.fc3 = nn.Linear(128, 64)
         self.out = nn.Linear(64, action_dim)
 
@@ -875,16 +875,16 @@ from collections import namedtuple, deque
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 GAMMA = 0.99
-LR = 0.0001
+LR = 0.001
 BATCH_SIZE = 64
 MEMORY_SIZE = 500_000
 
-EPS_START = 0.999
+EPS_START = 0.9
 EPS_END = 0.01
 EPS_DECAY = 0.997
 
-TARGET_UPDATE = 200  
-EPISODES = 2000
+TARGET_UPDATE = 100  
+EPISODES = 1000
 TIME = 500
 
 TRACKCHANGE_FREQ = 30
@@ -922,7 +922,7 @@ class DQN(nn.Module):
     def forward(self, x):
         x = torch.relu(self.fc1(x))
         x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))
+        x = torch.relu(self.fc3(x))r
         return self.out(x)
 
 # Initialize
