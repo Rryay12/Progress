@@ -594,7 +594,7 @@ class game:
         
         self.my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
-        self.checkpoint_score = 7
+        self.checkpoint_score = 10
         self.speed_score_mult = 0.03
         
         self.start_point = start_point
@@ -659,11 +659,12 @@ class game:
             self.checkpoint_position += 1
 
         # Bonus for staying alive (time alive reward)
-        self.current_point += 0.01  # +1 for every frame survived
 
         # Penalty for standing still
         if self.car.get_speed() < 0.5:
             self.current_point -= 0.1 # discourage inactivity or stalling
+        else:
+            self.current_point += 0.1
 
         self.total_score += self.current_point
         
@@ -835,9 +836,11 @@ class ReplayMemory(object):
         return len(self.memory)    
     
 angle_list = [10,30,60,90,160,200,270,300,330,350]
+#angle_list = [i for i in range(0,360,10)]
 
-count = 0
-version = 0
+
+count = 33
+version = 4
 
 
 loss_list = []
@@ -874,20 +877,21 @@ from collections import namedtuple, deque
 # Device setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-GAMMA = 0.99
-LR = 0.001
+GAMMA = 0.999
+LR = 0.01
 BATCH_SIZE = 64
 MEMORY_SIZE = 500_000
 
-EPS_START = 0.9
-EPS_END = 0.01
+EPS_START = 1
+EPS_END = 0.03
+EPS_START_MIN = 0.2
 EPS_DECAY = 0.997
 
 TARGET_UPDATE = 100  
-EPISODES = 1000
-TIME = 500
+EPISODES = 2000
+TIME = 1000
 
-TRACKCHANGE_FREQ = 30
+TRACKCHANGE_FREQ = 50
 # Actions
 actions = [(-1, -1), (-1, 0), (-1, 1),
            (0, -1), (0, 0), (0, 1),
@@ -922,12 +926,12 @@ class DQN(nn.Module):
     def forward(self, x):
         x = torch.relu(self.fc1(x))
         x = torch.relu(self.fc2(x))
-        x = torch.relu(self.fc3(x))r
+        x = torch.relu(self.fc3(x))
         return self.out(x)
 
 # Initialize
 
-path_name = "/Users/ard/Desktop/Coding_2/F1_laptime_project/salamander_development/"
+path_name = "/Users/ard/Desktop/Coding_2/F1_laptime_project/MIYAZAKI/KAMIKAZE!_"
 policy_dqn = DQN(16, 9).to(device)
 target_dqn = DQN(16, 9).to(device)
 loss = 0
@@ -956,7 +960,7 @@ while True:
     criterion = nn.SmoothL1Loss()
 
     epsilon = EPS_START
-    EPS_START = max([EPS_START*0.9,EPS_END])
+    EPS_START = max([EPS_START*0.9,EPS_START_MIN])
 
     def select_action(state, epsilon):
         if random.random() < epsilon:

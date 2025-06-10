@@ -13,8 +13,6 @@ import torch.nn.functional as F
 from collections import namedtuple, deque
 import torch.optim as optim
 
-import os
-
 pygame.init()
 
 font = pygame.font.SysFont(None, 36)
@@ -249,7 +247,7 @@ def generate_track(centerline, width=100):
     
     return inner, outer
 
-centerline = [(671.6, 115.5),
+centerline1 = [(671.6, 115.5),
 (541.7, 120.3),
 (402.0, 114.6),
 (248.2, 124.1),
@@ -305,7 +303,7 @@ centerline = [(671.6, 115.5),
 (996.2, 151.5),
 (736.5, 119.3),]
 
-centerline = [(1189.5, 129.7),
+centerline2 = [(1189.5, 129.7),
 (1103.4, 137.3),
 (989.1, 143.0),
 (864.9, 162.9),
@@ -346,13 +344,257 @@ centerline = [(1189.5, 129.7),
 (1306.7, 227.3),
 (1255.8, 187.5),]
 
+centerline3 = [(1279.8, 136.4),
+(1220.6, 142.0),
+(1141.5, 161.0),
+(1024.4, 188.4),
+(850.8, 184.7),
+(739.3, 153.4),
+(622.2, 138.3),
+(451.4, 134.5),
+(328.6, 140.2),
+(224.2, 174.2),
+(183.3, 237.7),
+(148.0, 319.1),
+(138.1, 418.6),
+(145.2, 512.3),
+(201.6, 636.4),
+(248.2, 688.4),
+(310.3, 716.9),
+(472.6, 729.2),
+(543.1, 715.9),
+(644.8, 663.8),
+(764.7, 637.3),
+(904.4, 643.0),
+(1107.7, 674.2),
+(1261.5, 674.2),
+(1326.4, 643.0),
+(1416.7, 553.0),
+(1440.7, 474.4),
+(1443.5, 341.9),
+(1429.4, 242.4),
+(1397.0, 188.4),
+(1357.5, 157.2),]
+
+centerline4 = [(1415.3, 126.9),
+(1277.0, 133.5),
+(1124.6, 154.4),
+(922.8, 188.4),
+(729.4, 243.4),
+(495.2, 344.7),
+(342.7, 415.7),
+(156.5, 500.0),
+(149.4, 586.2),
+(220.0, 659.1),
+(369.6, 699.8),
+(554.4, 696.0),
+(689.9, 685.6),
+(859.3, 676.1),
+(979.2, 690.3),
+(1154.2, 716.9),
+(1279.8, 735.8),
+(1397.0, 719.7),
+(1432.3, 620.3),
+(1391.3, 568.2),
+(1288.3, 502.8),
+(1238.9, 480.1),
+(1116.1, 455.5),
+(1013.1, 388.3),
+(1001.8, 322.0),
+(1099.2, 275.6),
+(1246.0, 250.0),
+(1344.8, 235.8),
+(1457.7, 216.9),
+(1490.1, 185.6),
+(1478.8, 144.9),]
+
+centerline5 = [(1344.8, 161.0),
+(1165.5, 148.7),
+(1000.4, 153.4),
+(788.7, 157.2),
+(551.6, 155.3),
+(354.0, 166.7),
+(225.6, 171.4),
+(207.3, 232.0),
+(208.7, 317.2),
+(214.3, 448.9),
+(238.3, 565.3),
+(245.4, 677.1),
+(275.0, 715.0),
+(387.9, 723.5),
+(455.6, 683.7),
+(457.1, 648.7),
+(447.2, 586.2),
+(452.8, 524.6),
+(455.6, 442.2),
+(451.4, 364.6),
+(468.3, 331.4),
+(529.0, 313.4),
+(644.8, 316.3),
+(668.8, 361.7),
+(680.0, 452.7),
+(691.3, 519.9),
+(708.3, 602.3),
+(725.2, 661.9),
+(764.7, 691.3),
+(822.6, 701.7),
+(890.3, 674.2),
+(908.7, 621.2),
+(912.9, 536.0),
+(917.1, 465.0),
+(921.4, 371.2),
+(927.0, 323.9),
+(963.7, 304.0),
+(1032.9, 303.0),
+(1138.7, 319.1),
+(1161.3, 358.9),
+(1164.1, 445.1),
+(1176.8, 577.7),
+(1196.6, 643.0),
+(1291.1, 706.4),
+(1364.5, 707.4),
+(1404.0, 672.3),
+(1460.5, 586.2),
+(1470.4, 487.7),
+(1474.6, 388.3),
+(1477.4, 307.8),
+(1453.4, 239.6),
+(1429.4, 208.3),]
+
+centerline6 = [(752.0, 394.9),
+(735.1, 359.8),
+(688.5, 304.9),
+(623.6, 247.2),
+(479.6, 169.5),
+(273.6, 139.2),
+(166.3, 183.7),
+(138.1, 299.2),
+(156.5, 358.9),
+(251.0, 480.1),
+(372.4, 557.8),
+(550.2, 628.8),
+(634.9, 686.6),
+(797.2, 733.9),
+(896.0, 735.8),
+(1032.9, 695.1),
+(1128.8, 645.8),
+(1206.5, 561.6),
+(1277.0, 469.7),
+(1312.3, 385.4),
+(1339.1, 306.8),
+(1327.8, 242.4),
+(1251.6, 160.0),
+(1179.6, 153.4),
+(1011.7, 202.7),
+(986.3, 261.4),
+(965.1, 369.3),
+(953.8, 467.8),
+(922.8, 536.0),
+(876.2, 555.9),
+(774.6, 500.9),
+(774.6, 473.5),]
+
+centerline7 = [(1268.5, 179.0),
+(1134.5, 169.5),
+(1107.7, 147.7),
+(975.0, 140.2),
+(936.9, 147.7),
+(866.3, 201.7),
+(842.3, 231.1),
+(767.5, 260.4),
+(661.7, 262.3),
+(606.7, 237.7),
+(544.6, 200.8),
+(489.5, 164.8),
+(385.1, 140.2),
+(265.1, 162.9),
+(236.9, 197.9),
+(229.8, 262.3),
+(222.8, 319.1),
+(284.9, 353.2),
+(344.2, 373.1),
+(379.4, 398.7),
+(411.9, 449.8),
+(399.2, 479.2),
+(355.4, 504.7),
+(251.0, 545.5),
+(215.7, 580.5),
+(205.8, 662.9),
+(235.5, 698.9),
+(342.7, 741.5),
+(490.9, 755.7),
+(520.6, 744.3),
+(537.5, 715.9),
+(516.3, 657.2),
+(523.4, 626.9),
+(578.4, 565.3),
+(634.9, 564.4),
+(699.8, 597.5),
+(788.7, 652.5),
+(845.2, 697.9),
+(929.8, 720.6),
+(969.4, 707.4),
+(989.1, 672.3),
+(982.1, 634.5),
+(938.3, 570.1),
+(910.1, 507.6),
+(911.5, 477.3),
+(975.0, 467.8),
+(1076.6, 507.6),
+(1116.1, 571.0),
+(1176.8, 642.0),
+(1306.7, 666.7),
+(1391.3, 642.0),
+(1418.1, 561.6),
+(1408.3, 510.4),
+(1358.9, 465.9),
+(1315.1, 435.6),
+(1229.0, 373.1),
+(1223.4, 334.3),
+(1268.5, 285.0),
+(1380.0, 234.8),
+(1430.8, 213.1),
+(1426.6, 168.6),
+(1381.5, 145.8),
+(1319.4, 142.0),
+(1262.9, 147.7),]
+
+centerline8 = [(1374.4, 153.4),
+(1271.4, 152.5),
+(1080.8, 160.0),
+(840.9, 159.1),
+(650.4, 152.5),
+(452.8, 154.4),
+(252.4, 160.0),
+(172.0, 192.2),
+(160.7, 294.5),
+(173.4, 508.5),
+(188.9, 625.0),
+(207.3, 726.3),
+(245.4, 765.2),
+(321.6, 781.3),
+(548.8, 776.5),
+(846.6, 779.4),
+(1097.8, 776.5),
+(1254.4, 772.7),
+(1363.1, 760.4),
+(1397.0, 723.5),
+(1412.5, 591.9),
+(1413.9, 423.3),
+(1419.6, 318.2),
+(1421.0, 244.3),
+(1418.1, 184.7),]
+
+
+centerline_list = [centerline1,centerline2,centerline3,centerline4,centerline5,centerline6,centerline8,centerline8]
+
 class game:
     def __init__(self,inner_points,outer_points,angle_list,start_point,draw_keys=True,checkpoint_pos = 0,starting_angle=180):
         self.draw_keys = draw_keys
         
         self.my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
-        self.checkpoint_score = 3
+        self.checkpoint_score = 10
         self.speed_score_mult = 0.03
         
         self.start_point = start_point
@@ -417,11 +659,12 @@ class game:
             self.checkpoint_position += 1
 
         # Bonus for staying alive (time alive reward)
-        self.current_point += 0.01  # +1 for every frame survived
 
         # Penalty for standing still
         if self.car.get_speed() < 0.5:
-            self.current_point -= 0.02  # discourage inactivity or stalling
+            self.current_point -= 0.1 # discourage inactivity or stalling
+        else:
+            self.current_point += 0.1
 
         self.total_score += self.current_point
         
@@ -518,7 +761,7 @@ class game:
         self.plot_checkpoint() if self.draw_keys else None
 
         if self.is_collided_with_track():
-            self.current_point = -10
+            self.current_point = -20
             self.total_score += self.current_point
             return False
 
@@ -530,6 +773,8 @@ class game:
             self.screen.blit(text_surface, (50, 50))
             pygame.display.update()
             pygame.time.Clock().tick(60)
+        else:
+            pygame.time.Clock().tick(1000)
 
         return True
     
@@ -557,18 +802,19 @@ class game:
     def return_score(self):
         return self.current_point
         
-inner_points,outer_points = generate_track(centerline,100)
 
 class DQN(nn.Module):
     def __init__(self, state_dim, action_dim):
         super(DQN, self).__init__()
-        self.fc1 = nn.Linear(state_dim, 128)
-        self.fc2 = nn.Linear(128, 128)
-        self.out = nn.Linear(128, action_dim)
+        self.fc1 = nn.Linear(state_dim, 64)
+        self.fc2 = nn.Linear(64, 128)
+        self.fc3 = nn.Linear(128, 64)
+        self.out = nn.Linear(64, action_dim)
 
     def forward(self, x):
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
+        x = F.relu(self.fc3(x))
         return self.out(x)
     
     
@@ -590,9 +836,11 @@ class ReplayMemory(object):
         return len(self.memory)    
     
 angle_list = [10,30,60,90,160,200,270,300,330,350]
+#angle_list = [i for i in range(0,360,10)]
 
-count = 3
-version = 22
+
+count = 10
+version = 7
 
 
 loss_list = []
@@ -624,29 +872,25 @@ def calculate_start(in_pt,out_pt):
     
     return pos_x, pos_y, angle, checkpoint_start
 
-import pygame
-import random
-import torch
-import torch.nn as nn
-import torch.optim as optim
 from collections import namedtuple, deque
 
 # Device setup
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-GAMMA = 0.99
-LR = 0.00005
+GAMMA = 0.999
+LR = 0.001
 BATCH_SIZE = 64
 MEMORY_SIZE = 500_000
 
-EPS_START = 0.9
-EPS_END = 0.005
-EPS_DECAY = 0.99
+EPS_START = 1
+EPS_END = 0.03
+EPS_DECAY = 0.995
 
-TARGET_UPDATE = 300  
-EPISODES = 5000
+TARGET_UPDATE = 100  
+EPISODES = 1000
 TIME = 500
 
+TRACKCHANGE_FREQ = 50
 # Actions
 actions = [(-1, -1), (-1, 0), (-1, 1),
            (0, -1), (0, 0), (0, 1),
@@ -701,7 +945,7 @@ import keyboard
 pygame.init()
 pygame.font.init()
 
-pathname ="/Users/ard/Desktop/Coding_2/F1_laptime_project/multitrack_2/policy_no_20-1.pth"
+pathname ="/Users/ard/Desktop/Coding_2/F1_laptime_project/Miyazaki_tokkou/Kamikaze_43-16.pth"
 
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
